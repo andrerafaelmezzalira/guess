@@ -1,131 +1,124 @@
 package guess.junit;
 
-import guess.Game;
-import junit.framework.TestCase;
-
-public class PlayerTest extends TestCase {
+public class PlayerTest extends FacilitatesTest {
 
 	public void testMacaco() {
-		Game game = new Game();
-		assertEquals("Pense em um animal", game.nextQuestion());
-		game.ok();
-		assertEquals("Vive na Água?", game.nextQuestion());
-		game.no();
-		assertEquals("Macaco?", game.nextQuestion());
-		game.yes();
-		assertEquals("Ganhei! Sou muito bom!", game.nextQuestion());
+
+		startGame();
+
+		asking("Pense em um animal");
+		ok();
+		asking("Vive na Água?");
+		no();
+		asking("Macaco?");
+		yes();
+
+		endGame("Ganhei! Sou muito bom!");
 
 	}
 
 	public void testBorboleta() {
-		Game game = new Game();
-		assertEquals("Pense em um animal", game.nextQuestion());
-		game.ok();
-		assertEquals("Vive na Água?", game.nextQuestion());
-		game.no();
-		assertEquals("Macaco?", game.nextQuestion());
-		game.no();
-		assertEquals("Desisto, qual foi o animal que você pensou?",
-				game.nextQuestion());
-		game.answer("Borboleta");
-		assertEquals("Complete, Borboleta __________ mas Macaco não",
-				game.nextQuestion());
-		game.answer("Tem Asas");
 
-		assertEquals("Pense em um animal", game.nextQuestion());
-		game.ok();
-		assertEquals("Tem Asas?", game.nextQuestion());
-		game.yes();
-		assertEquals("Borboleta?", game.nextQuestion());
-		game.no();
-		assertEquals("Desisto, qual foi o animal que você pensou?",
-				game.nextQuestion());
-		game.answer("Avestruz");
-		assertEquals("Complete, Avestruz __________ mas Borboleta não",
-				game.nextQuestion());
-		game.answer("É feio");
+		startGame();
 
-		assertEquals("Pense em um animal", game.nextQuestion());
-		game.ok();
-		assertEquals("Tem Asas?", game.nextQuestion());
-		game.yes();
-		assertEquals("É feio?", game.nextQuestion());
-		game.yes();
-		assertEquals("Avestruz?", game.nextQuestion());
-		game.no();
-		assertEquals("Desisto, qual foi o animal que você pensou?",
-				game.nextQuestion());
-		game.answer("Corvo");
-		assertEquals("Complete, Corvo __________ mas Avestruz não",
-				game.nextQuestion());
-		game.answer("É preto");
+		asking("Pense em um animal");
+		ok();
+		asking("Vive na Água?");
+		no();
+		asking("Macaco?");
+		no();
+		giveUp("Desisto, qual foi o animal que você pensou?");
+		answer("Borboleta");
+		complete("Complete, Borboleta __________ mas Macaco não");
+		answer("Tem Asas");
 
-		assertEquals("Pense em um animal", game.nextQuestion());
-		game.ok();
-		assertEquals("Tem Asas?", game.nextQuestion());
-		game.yes();
-		assertEquals("É feio?", game.nextQuestion());
-		game.no();
-		assertEquals("Borboleta?", game.nextQuestion());
-		game.yes();
-		assertEquals("Ganhei! Sou muito bom!", game.nextQuestion());
+		asking("Pense em um animal");
+		ok();
+		asking("Tem Asas?");
+		yes();
+		asking("Borboleta?");
+		no();
+		giveUp("Desisto, qual foi o animal que você pensou?");
+		answer("Avestruz");
+		complete("Complete, Avestruz __________ mas Borboleta não");
+		answer("É feio");
+
+		asking("Pense em um animal");
+		ok();
+		asking("Tem Asas?");
+		yes();
+		asking("É feio?");
+		yes();
+		asking("Avestruz?");
+		no();
+		giveUp("Desisto, qual foi o animal que você pensou?");
+		answer("Corvo");
+		complete("Complete, Corvo __________ mas Avestruz não");
+		answer("É preto");
+
+		asking("Pense em um animal");
+		ok();
+		asking("Tem Asas?");
+		yes();
+		asking("É feio?");
+		no();
+		asking("Borboleta?");
+		yes();
+
+		endGame("Ganhei! Sou muito bom!");
 
 	}
 
 	public void testCorvo() {
-		Game game = new Game();
-		assertEquals("Pense em um animal", game.nextQuestion());
-		game.ok();
-		assertEquals("Vive na Água?", game.nextQuestion());
-		game.no();
-		assertEquals("Macaco?", game.nextQuestion());
-		game.no();
-		assertEquals("Desisto, qual foi o animal que você pensou?",
-				game.nextQuestion());
-		game.answer("Borboleta");
-		assertEquals("Complete, Borboleta __________ mas Macaco não",
-				game.nextQuestion());
-		game.answer("Tem Asas");
+		startGame();
 
-		assertEquals("Pense em um animal", game.nextQuestion());
-		game.ok();
-		assertEquals("Tem Asas?", game.nextQuestion());
-		game.yes();
-		assertEquals("Borboleta?", game.nextQuestion());
-		game.no();
-		assertEquals("Desisto, qual foi o animal que você pensou?",
-				game.nextQuestion());
-		game.answer("Avestruz");
-		assertEquals("Complete, Avestruz __________ mas Borboleta não",
-				game.nextQuestion());
-		game.answer("É feio");
+		asking("Pense em um animal");
+		ok();
+		asking("Vive na Água?");
+		no();
+		asking("Macaco?");
+		no();
+		giveUp("Desisto, qual foi o animal que você pensou?");
+		answer("Borboleta");
+		complete("Complete, Borboleta __________ mas Macaco não");
+		answer("Tem Asas");
 
-		assertEquals("Pense em um animal", game.nextQuestion());
-		game.ok();
-		assertEquals("Tem Asas?", game.nextQuestion());
-		game.yes();
-		assertEquals("É feio?", game.nextQuestion());
-		game.yes();
-		assertEquals("Avestruz?", game.nextQuestion());
-		game.no();
-		assertEquals("Desisto, qual foi o animal que você pensou?",
-				game.nextQuestion());
-		game.answer("Corvo");
-		assertEquals("Complete, Corvo __________ mas Avestruz não",
-				game.nextQuestion());
-		game.answer("É preto");
+		asking("Pense em um animal");
+		ok();
+		asking("Tem Asas?");
+		yes();
+		asking("Borboleta?");
+		no();
+		giveUp("Desisto, qual foi o animal que você pensou?");
+		answer("Avestruz");
+		complete("Complete, Avestruz __________ mas Borboleta não");
+		answer("É feio");
 
-		assertEquals("Pense em um animal", game.nextQuestion());
-		game.ok();
-		assertEquals("Tem Asas?", game.nextQuestion());
-		game.yes();
-		assertEquals("É feio?", game.nextQuestion());
-		game.yes();
-		assertEquals("É preto?", game.nextQuestion());
-		game.yes();
-		assertEquals("Corvo?", game.nextQuestion());
-		game.yes();
-		assertEquals("Ganhei! Sou muito bom!", game.nextQuestion());
+		asking("Pense em um animal");
+		ok();
+		asking("Tem Asas?");
+		yes();
+		asking("É feio?");
+		yes();
+		asking("Avestruz?");
+		no();
+		giveUp("Desisto, qual foi o animal que você pensou?");
+		answer("Corvo");
+		complete("Complete, Corvo __________ mas Avestruz não");
+		answer("É preto");
+
+		asking("Pense em um animal");
+		ok();
+		asking("Tem Asas?");
+		yes();
+		asking("É feio?");
+		yes();
+		asking("É preto?");
+		yes();
+		asking("Corvo?");
+		yes();
+
+		endGame("Ganhei! Sou muito bom!");
 
 	}
 
